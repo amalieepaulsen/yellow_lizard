@@ -23,9 +23,9 @@ set_theme(theme_bw())
 ## -----------------------------------------------------------------------------
 
 ## Average penguin body mass by species
-species_bm <- penguins |>
+species_bm <- palmerpenguins::penguins |>
   drop_na() |>
-  select(species, body_mass_g)
+  select(species, body_mass_g, bill_depth_mm)
 
 ## -----------------------------------------------------------------------------
 
@@ -40,4 +40,15 @@ species_bm |>
 
 ## -----------------------------------------------------------------------------
 
+## Bill depth box plot
+species_bm |>
+  ggplot(aes(x = species, y = bill_depth_mm, fill = species, alpha = 0.4)) +
+  geom_boxplot() +
+  theme(
+    legend.position = "none",
+    legend.title = element_blank()
+  )
+
+
 ## heyyyyy
+## :))
